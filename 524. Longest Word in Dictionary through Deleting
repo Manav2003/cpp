@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool check(string x, string s)
+    {
+        int i=0,j=0;
+        while(i<x.size() &&  j < s.size())
+        {
+            if(x[i]==s[j])
+            i++;
+            j++;
+        }
+        return (i==x.size());
+    }
+    string findLongestWord(string s, vector<string>& dict) {
+        string ans="";
+        sort(dict.begin(),dict.end(),greater<>());
+        for(auto x : dict)
+        if(check(x,s) && x.size()>=ans.size())
+        ans=x;
+        return ans;
+    }
+};
